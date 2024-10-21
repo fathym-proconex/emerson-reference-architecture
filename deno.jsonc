@@ -14,17 +14,7 @@
     "test": "npx rimraf cov && deno test -A ./tests/tests.ts --coverage=cov",
     "version": "deno run -A jsr:@fathym/common@0/build/version"
   },
-  "imports": {
-    "@fathym/common": "jsr:@fathym/common@0",
-    "@fathym/eac": "jsr:@fathym/eac@0",
-    "@fathym/eac-runtime": "jsr:@fathym/eac-runtime@0",
-    "@std/log": "jsr:@std/log@0.224.6",
-    "preact": "npm:preact@10.20.1",
-    "tailwindcss": "npm:tailwindcss@3.4.1",
-    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
-    "tailwindcss/unimportant": "npm:tailwindcss-unimportant@2.1.1"
-  },
+  "imports": {},
   "exclude": [
     "**/_eac-runtime/*"
   ],
