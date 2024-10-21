@@ -1,0 +1,72 @@
+{
+  "name": "@emerson/common",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./mod.ts"
+  },
+  "tasks": {
+    "build": "deno task build:fmt && deno task build:lint && deno task publish:check && deno task test",
+    "build:fmt": "deno fmt",
+    "build:lint": "deno lint",
+    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
+    "deploy": "npx rimraf cov && deno task build && ftm git",
+    "publish:check": "deno publish --dry-run --allow-dirty",
+    "test": "npx rimraf cov && deno test -A ./tests/tests.ts --coverage=cov",
+    "version": "deno run -A jsr:@fathym/common@0/build/version"
+  },
+  "imports": {
+    "@fathym/common": "jsr:@fathym/common@0",
+    "@fathym/eac": "jsr:@fathym/eac@0",
+    "@fathym/eac-runtime": "jsr:@fathym/eac-runtime@0",
+    "@std/log": "jsr:@std/log@0.224.6",
+    "preact": "npm:preact@10.20.1",
+    "tailwindcss": "npm:tailwindcss@3.4.1",
+    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
+    "tailwindcss/unimportant": "npm:tailwindcss-unimportant@2.1.1"
+  },
+  "exclude": [
+    "**/_eac-runtime/*"
+  ],
+  "lint": {
+    "include": [
+      "apps/",
+      "configs/",
+      "src/",
+      "tests/"
+    ],
+    "exclude": [],
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo"
+      ],
+      "exclude": []
+    }
+  },
+  "fmt": {
+    "include": [
+      "apps/",
+      "configs/",
+      "src/",
+      "tests/"
+    ],
+    "exclude": [],
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "proseWrap": "preserve",
+    "semiColons": true,
+    "singleQuote": true,
+    "useTabs": false
+  },
+  "unstable": [
+    "kv"
+  ],
+  "lock": false,
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  }
+}
